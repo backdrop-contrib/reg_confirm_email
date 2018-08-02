@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function reg_confirm_email_uninstall() {
+  variable_del('reg_confirm_email_option');
+}

@@ -1,1 +1,0 @@
-Registration Confirm Email Address

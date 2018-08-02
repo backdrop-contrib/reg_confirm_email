@@ -1,0 +1,4 @@
+name = Registration Confirm Email Address
+description = Adds a confirm email address field under email address field on registration form.
+core = 7.x 
+configure = admin/config/people/accounts
