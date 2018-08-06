@@ -11,7 +11,7 @@
 function reg_confirm_email_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'user_admin_settings':
-      // Add a checkbox option to enable email confirmation in registration page.
+      // Add a checkbox option in account settings page.
       $form['register_settings'] = array(
         '#type' => 'fieldset',
         '#title' => t('Confirm email address'),
@@ -54,9 +54,9 @@ function reg_confirm_email_form_user_register_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Custom validation function for user registration form
- * 
- * @see reg_confirm_email_form_user_register_form_alter.
+ * Custom validation function for user registration form.
+ *
+ * @see reg_confirm_email_form_user_register_form_alter
  */
 function reg_confirm_email_user_register_validate($form, &$form_state) {
   // Check to see whether e-mail address matches the confirm address.
