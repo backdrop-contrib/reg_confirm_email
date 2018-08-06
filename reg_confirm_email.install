@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Install, update and uninstall functions for the reg_confirm_email module.
+ */
+
+/**
  * Implements hook_uninstall().
  */
 function reg_confirm_email_uninstall() {
