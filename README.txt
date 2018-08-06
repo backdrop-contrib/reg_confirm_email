@@ -28,6 +28,5 @@ MAINTAINERS
 -----------
 
 Current maintainers:
-* Judy Montesa (montesajudy) - https://drupal.org/user/3443767
-  - montesajudy@gmail.com
-  
+* Judy Montesa (montesajudy@gmail.com) - https://drupal.org/user/3443767
+
