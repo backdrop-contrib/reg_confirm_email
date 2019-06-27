@@ -23,6 +23,12 @@ function reg_confirm_email_form_alter(&$form, &$form_state, $form_id) {
         '#default_value' => variable_get('reg_confirm_email_option', 0),
         '#description' => t("User will have to type the same e-mail address into both fields. This helps to confirm that they've typed the correct address."),
       );
+      $form['register_settings']['reg_confirm_email_desc'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Confirm Email Description'),
+        '#default_value' => variable_get('reg_confirm_email_desc', NULL),
+        '#description' => t("Add help text"),
+      );
       break;
   }
 }
@@ -40,7 +46,7 @@ function reg_confirm_email_form_user_register_form_alter(&$form, &$form_state) {
       '#title' => t('Confirm e-mail address'),
       '#weight' => -28,
       '#maxlength' => 64,
-      '#description' => t('Please re-type your e-mail address to confirm it is accurate.'),
+      '#description' => variable_get('reg_confirm_email_desc', NULL),
       '#required' => TRUE,
     );
 

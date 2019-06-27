@@ -29,3 +29,4 @@ MAINTAINERS
 
 Current maintainers:
 * Judy Montesa (montesajudy@gmail.com) - https://drupal.org/user/3443767
+* Volodymyr Knyshuk (knyshuk.vova@gmail.com) - https://www.drupal.org/user/3536002
