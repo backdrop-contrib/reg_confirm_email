@@ -13,7 +13,7 @@ It adds a confirm email address field under email address field in
 the registration form.
 
 If you want your users to rewrite their email address during registration
-but don't want to install the whole LoginTobogganmodule, 
+but don't want to install the whole LoginToboggan module, 
 then this module is for you.
 
 INSTALLATION
