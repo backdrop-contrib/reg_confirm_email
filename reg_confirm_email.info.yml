@@ -3,3 +3,4 @@ description: 'Adds a confirm email address field under email address field on re
 core: 8.x
 type: module
 configure: entity.user.admin_form
+core_version_requirement: ^8 || ^9
