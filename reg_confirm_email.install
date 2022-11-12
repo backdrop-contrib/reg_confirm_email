@@ -9,5 +9,25 @@
  * Implements hook_uninstall().
  */
 function reg_confirm_email_uninstall() {
-  variable_del('reg_confirm_email_option');
+  config_clear('system.core', 'reg_confirm_email_option');
+}
+
+/**
+ * Migrate reg_confirm_email variables to config.
+ */
+function reg_confirm_email_update_1000() {
+  $config = config('system.core');
+  $config->set('reg_confirm_email_option', update_variable_get('reg_confirm_email_option', '0'));
+  $config->set('reg_confirm_email_desc', update_variable_get('reg_confirm_email_desc', 'NULL'));
+  $config->save();
+
+  update_variable_del('reg_confirm_email_option');
+  update_variable_del('reg_confirm_email_desc');
+}
+
+/**
+ * Implements hook_install().
+ */
+function reg_confirm_email_install() {
+  // Dynamically generated variable data was detected.
 }

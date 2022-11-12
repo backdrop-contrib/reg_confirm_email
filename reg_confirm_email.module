@@ -5,10 +5,14 @@
  * Module file for reg_confirm_email.
  */
 
+
 /**
  * Implements hook_form_alter().
  */
 function reg_confirm_email_form_alter(&$form, &$form_state, $form_id) {
+  $config = config('system.core');
+  // dpm($form_state);
+  // dpm($form);
   switch ($form_id) {
     case 'user_admin_settings':
       // Add a checkbox option in account settings page.
@@ -20,13 +24,13 @@ function reg_confirm_email_form_alter(&$form, &$form_state, $form_id) {
       $form['register_settings']['reg_confirm_email_option'] = array(
         '#type' => 'checkbox',
         '#title' => t('Use two e-mail fields on registration form'),
-        '#default_value' => variable_get('reg_confirm_email_option', 0),
+        '#default_value' => $config->get('reg_confirm_email_option'),
         '#description' => t("User will have to type the same e-mail address into both fields. This helps to confirm that they've typed the correct address."),
       );
       $form['register_settings']['reg_confirm_email_desc'] = array(
         '#type' => 'textfield',
         '#title' => t('Confirm Email Description'),
-        '#default_value' => variable_get('reg_confirm_email_desc', NULL),
+        '#default_value' => $config->get('reg_confirm_email_desc'),
         '#description' => t("Add help text"),
       );
       break;
@@ -37,7 +41,8 @@ function reg_confirm_email_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_ID_form_alter().
  */
 function reg_confirm_email_form_user_register_form_alter(&$form, &$form_state) {
-  $mail_confirm = variable_get('reg_confirm_email_option', 0);
+  $config = config('system.core');
+  $mail_confirm = $config->get('reg_confirm_email_option');
 
   // Show the confirm email field only if it is enabled in settings.
   if ($mail_confirm) {
@@ -46,7 +51,7 @@ function reg_confirm_email_form_user_register_form_alter(&$form, &$form_state) {
       '#title' => t('Confirm e-mail address'),
       '#weight' => -28,
       '#maxlength' => 64,
-      '#description' => variable_get('reg_confirm_email_desc', NULL),
+      '#description' => $config->get('reg_confirm_email_desc'),
       '#required' => TRUE,
     );
 
@@ -66,7 +71,7 @@ function reg_confirm_email_form_user_register_form_alter(&$form, &$form_state) {
  */
 function reg_confirm_email_user_register_validate($form, &$form_state) {
   // Check to see whether e-mail address matches the confirm address.
-  if (variable_get('reg_confirm_email_option', 0) && isset($form_state['values']['conf_mail'])) {
+  if (config_get('system.core', 'reg_confirm_email_option') && isset($form_state['values']['conf_mail'])) {
     if ($form_state['values']['mail'] !== $form_state['values']['conf_mail']) {
       form_set_error('conf_mail', t('Your e-mail address and confirmed e-mail address must match.'));
     }
